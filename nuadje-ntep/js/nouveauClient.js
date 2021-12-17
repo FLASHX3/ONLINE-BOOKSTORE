@@ -20,7 +20,7 @@ function surligne(champ,erreur)
 
 function verifNom(nom)
 {
-    var regex=/^[a-zA-Zéèêâôï- ]{0,25}$/;
+    var regex=/^[a-zA-Zéèêâôï -]{0,25}$/;
 
     if(nom.value=="")
     {
@@ -45,7 +45,7 @@ function verifNom(nom)
 
 function verifPrenom(prenom)
 {
-    var regex=/^[a-zA-Zéèêâôï- ]{0,25}$/;
+    var regex=/^[a-zA-Zéèêâôï -]{0,25}$/;
 
     if(prenom.value=="")
     {
@@ -79,7 +79,7 @@ function verifEmail(email)
     }
     else
     {
-        if (!regex.value(email.value))
+        if (!regex.test(email.value))
         {
             surligne(email,true);
             c=false;
@@ -95,7 +95,7 @@ function verifEmail(email)
 
 function verifPassword(mdp)
 {
-	var regex=/^[a-zA-Z0-9éèôâêîï.-_*@&$]{8}$/;
+	var regex=/^[a-zA-Z0-9éèôâêîï.-_*@&$]{8,16}$/;
     
 	if(mdp.value=="")
     {
@@ -120,10 +120,13 @@ function verifPassword(mdp)
 function verifConfPassword(cmdp)
 {
 	var test=verifPassword(document.getElementById('password'));
-	var regex=/^[a-zA-Z0-9éèôâêîï.-_*@&$]{8}$/;
+	var regex=/^[a-zA-Z0-9éèôâêîï.-_*@&$]{8,16}$/;
 	if(cmdp.value==""){
 		surligne(cmdp,false);
-	}else{
+        e=false;
+	}
+    else
+    {
 		if(regex.test(cmdp.value)){
 			if(test){
 				if(cmdp.value==document.getElementById('password').value)
@@ -154,7 +157,8 @@ function verifAdresse(tel){
         surligne(tel,false);
         f=false;
     }
-    else{
+    else
+    {
         if(!regex.test(tel.value))
         {
             f=false;
@@ -170,7 +174,7 @@ function verifAdresse(tel){
 }
 
 function verifAdrLivr(ville){
-	var regex=/^[A-Z][a-zA-Z-éè ]{3,38}$/;
+	var regex=/^[a-zA-Z0-9éèêâôïç -]{1,38}$/;
 
     if(ville.value=="")
     {
@@ -189,4 +193,24 @@ function verifAdrLivr(ville){
         }
     }
 	return g;
+}
+
+function verifForm(form)
+{
+    var nomOk=verifNom(form.nom);
+    var prenomOk=verifPrenom(form.prenom);
+    var emailOk=verifEmail(form.email);
+    var passwordOk=verifPassword(form.password);
+    var cpasswordOk=verifConfPassword(form.cpassword);
+    var adresseOk=verifAdresse(form.adresse);
+    var adrLivrOk=verifAdrLivr(form.adrLivr);
+
+    if(nomOk && prenomOk && emailOk && passwordOk && cpasswordOk && adresseOk && adrLivrOk)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

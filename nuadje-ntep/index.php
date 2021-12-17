@@ -1,5 +1,5 @@
 <?php
-    if(!isset($_POST['login']) and !isset($_POST['password']))
+    if(!isset($_POST['envoie']))
     {       # le formulaire n'a pas encore été envoyé
 ?>
 
@@ -25,13 +25,12 @@
         <section>
             <form action="index.php" method="post" onsubmit="return verifForm(this);">
                 <fieldset>
-                    <legend>Identification</legend>
                     <h1>Bienvenue sur ONLINE BOOKSTORE</h1>
                     <label for="login">Login</label><input type="email" name="login" placeholder="votre email" id="login" required oninput="verifLogin(this);" title="votre email">
                     <span id="errlog"></span>
                     <label for="password">Password</label><input type="password" name="password" placeholder="8 caractères minimum" id="password" required oninput="verifMdp(this);" maxlength="16" title="8 caractères minimum">
-                    <span id="errmdp"></span>
-                    <input type="submit" value="Validez" title="se connecter"> <input type="reset" value="Effacer" title="vider les champs"><br>
+                    <span id="errmdp"><?php if(isset($_GET['errpass'])){echo $_GET['errpass'];} ?></span>
+                    <input type="submit" value="Validez" title="se connecter" name="envoie"> <input type="reset" value="Effacer" title="vider les champs"><br>
                     <div id="lien">
                         <a href="pages/nouveauClient.php" id="newclient" title="s'inscrire"><p>Vous êtes un nouveau client: cliquez ICI</p></a>
                         <a href="#forgot-pw" id="forgotpassword" title="Si vous avez oubliez votre mot de passe cliquez ici">mot de passe oublié?</a>
@@ -52,7 +51,7 @@
 
 <?php
     }
-    else        #après l'envoie du formaulaire
+    else    #après l'envoie du formaulaire
     {       #on verifie les données envoyé par l'utilisateur avec des regex(expression regulières)
         if(!empty($_POST['login']) and !empty($_POST['password']))
         {
@@ -68,13 +67,11 @@
                 header('location: pages/error.php');
             }
 
-            $password=SHA1($password);      #on hache le mot de passe
-
-            require_once("../../parametre.inc");
+            $password=sha1($password);      #on hache le mot de passe
 
             try
             {# connection à la base de donnée
-                $connexion=new PDO("mysql:host=$serveur;dbname=$database7;charset=utf8",$user,$user_password);
+                $connexion=new PDO("mysql:host=localhost;dbname=librairie;charset=utf8",'root','');
                 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $connexion->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
             }
@@ -88,7 +85,7 @@
             $requete->execute(array($login,$password));
             $userexist=$requete->rowCount();
 
-            if($userexist>0)        #s'il existe on ouvre sa session
+            if($userexist==1)        #s'il existe on ouvre sa session
             {
                 $userinfo=$requete->fetch();
                 
@@ -101,16 +98,18 @@
                 $_SESSION['Password']=$userinfo['Password'];
                 $_SESSION['Adresse']=$userinfo['Adresse'];
                 $_SESSION['AdresseLivraison']=$userinfo['AdresseLivraison'];
-                $_SESSION['DateCreation']=$userinfo['DateCreation'];
+                $_SESSION['DateCreationCompte']=$userinfo['DateCreationCompte'];
                 $_SESSION['NombreAchat']=$userinfo['NombreAchat'];
 
                 $requete->closeCursor();
                 header('location: pages/espaceCLients.php');
             }
             else        #s'il n'existe pas on affiche la page error.php
+            {
                 $requete->closeCursor();
                 header('location: pages/error.php');
             }
+        }
         else        #si les données envoyés envoyé par l'utilisateur sont vides
         {
             header('location: index.php?errpass=remplissez tous les champs');
