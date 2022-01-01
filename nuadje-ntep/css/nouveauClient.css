@@ -6,6 +6,7 @@
     box-sizing: 0;
 }
 
+
 body{
     background-image: url("../img/fond2.jpg");
     background-size: cover;
@@ -24,6 +25,7 @@ body{
 section{
     height: 90vh;
     display: flex;
+    flex-direction: column;
     overflow: auto;
 }
 
@@ -33,7 +35,7 @@ form{
 }
 
 fieldset{
-    border: 2px dashed whitesmoke;
+    border: 2px dashed white;
     border-radius: 10px;
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.795);
@@ -61,7 +63,7 @@ label{
 }
 
 [type="text"],[type="password"],[type="email"],[type="tel"]{
-    width: 90%;
+    width: 75%;
     outline: none;
     padding: 3px;
     border: none;
@@ -83,7 +85,7 @@ label{
     outline: none;
     font-weight: bold;
     background-color: rgba(243, 240, 242, 0.7);
-    transition: width 0.5s ease-out 0s, backgound-color 0.3s ease-out 0s, color 0.3s ease-out 0s, border-color 0.3s ease-out 0s ;
+    transition: all 0.5s ease-out 0s;
 }
 
 [type="submit"]{
@@ -113,4 +115,23 @@ label{
 [colspan="2"]{
     text-align: center;
     width: 100%;
+}
+
+.span{
+    color: red;
+}
+
+#goback{
+    margin: auto;
+    color: blue;
+    text-decoration: none;
+    background-color: white;
+    padding: 3px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+#goback:hover{
+    background-color: pink;
+    font-weight: bold;
 }

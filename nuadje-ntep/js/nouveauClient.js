@@ -21,10 +21,12 @@ function surligne(champ,erreur)
 function verifNom(nom)
 {
     var regex=/^[a-zA-Zéèêâôï -]{0,25}$/;
+    var erreur=document.getElementById('errnom');
 
     if(nom.value=="")
     {
         surligne(nom,false);
+        erreur.innerHTML="";
         a=false;
     }
     else
@@ -32,11 +34,13 @@ function verifNom(nom)
         if(!regex.test(nom.value))
         {
             surligne(nom,true);
+            erreur.innerHTML="nom invalide!";
             a=false;
         }
         else
         {
             surligne(nom,false);
+            erreur.innerHTML="";
             a=true;
         }
     }
@@ -46,10 +50,12 @@ function verifNom(nom)
 function verifPrenom(prenom)
 {
     var regex=/^[a-zA-Zéèêâôï -]{0,25}$/;
+    var erreur=document.getElementById('errprenom');
 
     if(prenom.value=="")
     {
         surligne(prenom,false);
+        erreur.innerHTML="";
         b=false;
     }
     else
@@ -57,11 +63,13 @@ function verifPrenom(prenom)
         if(!regex.test(prenom.value))
         {
             surligne(prenom,true);
+            erreur.innerHTML="prenom invalide!";
             b=false;
         }
         else
         {
             surligne(prenom,false);
+            erreur.innerHTML="";
             b=true;
         }
     }
@@ -71,10 +79,12 @@ function verifPrenom(prenom)
 function verifEmail(email)
 {
     regex=/^[a-zA-Z0-9]+@[a-zA-Z0-9_-]+\.[a-z]{2,4}$/;
+    var erreur=document.getElementById('erremail');
 
     if(email.value=="")
     {
         surligne(email,true);
+        erreur.innerHTML="";
         c=false;
     }
     else
@@ -82,11 +92,13 @@ function verifEmail(email)
         if (!regex.test(email.value))
         {
             surligne(email,true);
+            erreur.innerHTML="email invalid!";
             c=false;
         }
         else
         {
             surligne(email,false);
+            erreur.innerHTML="";
             c=true;
         }
     }
@@ -96,21 +108,25 @@ function verifEmail(email)
 function verifPassword(mdp)
 {
 	var regex=/^[a-zA-Z0-9éèôâêîï.-_*@&$]{8,16}$/;
+    var erreur=document.getElementById('errpass');
     
 	if(mdp.value=="")
     {
 		surligne(mdp,false);
+        erreur.innerHTML="";
         d=false;
 	}else
     {
 		if(!regex.test(mdp.value))
 		{
 			d=false;
+            erreur.innerHTML="mot de passe doit contenir 8 caractères minimum!";
 			surligne(mdp,true);
 		}
         else
         {
 			d=true;
+            erreur.innerHTML="";
 			surligne(mdp,false);
 		}
 	}
@@ -121,8 +137,11 @@ function verifConfPassword(cmdp)
 {
 	var test=verifPassword(document.getElementById('password'));
 	var regex=/^[a-zA-Z0-9éèôâêîï.-_*@&$]{8,16}$/;
+    var erreur=document.getElementById('errecpass');
+
 	if(cmdp.value==""){
 		surligne(cmdp,false);
+        erreur.innerHTML="";
         e=false;
 	}
     else
@@ -133,16 +152,20 @@ function verifConfPassword(cmdp)
 				{
 					e=true;
 					surligne(cmdp,false);
+                    erreur.innerHTML="";
 				}else{
 					e=false;
 					surligne(cmdp,true);
+                    erreur.innerHTML="les mots de passe ne sont pas identiques";
 				}
 			}else{
 				e=false;
+                document.getElementById('password').innerHTML="mot de passe invalide!";
 				surligne(cmdp,true);
 			}
 		}else{
 			e=false;
+            erreur.innerHTML="mot de passe invalide!";
 			surligne(cmdp,true);
 		}
 	}
@@ -151,10 +174,12 @@ function verifConfPassword(cmdp)
 
 function verifAdresse(tel){
 	var regex=/^6([-. ]?[0-9]{2}){4}$/;
+    var erreur=document.getElementById('erradr');
 
     if (tel.value=="")
     {
         surligne(tel,false);
+        erreur.innerHTML="";
         f=false;
     }
     else
@@ -162,11 +187,13 @@ function verifAdresse(tel){
         if(!regex.test(tel.value))
         {
             f=false;
+            erreur.innerHTML="";
             surligne(tel,true);
         }
         else
         {
             f=true;
+            erreur.innerHTML="Le numéro de téléphone est invalide!";
             surligne(tel,false);
         }
     }
@@ -175,20 +202,24 @@ function verifAdresse(tel){
 
 function verifAdrLivr(ville){
 	var regex=/^[a-zA-Z0-9éèêâôïç -]{1,38}$/;
+    var erreur=document.getElementById('erradrlivr');
 
     if(ville.value=="")
     {
         surligne(ville,false);
+        erreur.innerHTML="";
         g=false;
     }
     else{
         if(!regex.test(ville.value))
         {
             g=false;
+            erreur.innerHTML="";
             surligne(ville,true);
         }
         else{
             g=true;
+            erreur.innerHTML="adresse de livraison invalide!";
             surligne(ville,false);
         }
     }

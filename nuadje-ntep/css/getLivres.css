@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+body{
+    background-image: url("../img/aquarelle-bouquet-floral-en-bleu-rose-couleur.jpg");
+    /*background-repeat: no-repeat;
+    background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#contain{
+    min-height: 100vh;
+    position: relative;
+    font-family: "Gabriola", Arial, Helvetica, sans-serif;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+table{
+    font-size: 25px;
+    background-color: blanchedalmond;
+    box-shadow: 3px 3px 5px black;
+}
+
+th{
+    background-color: rgb(7,151,177);
+    color: rgb(0, 0, 0);
+}
+
+.tr:hover{
+    background-color: rgb(7, 151, 177);
+    color: white;
+}
+
+td{
+    width: 150px;
+    text-align: center;
+}
+
+td:hover{
+    background-color: pink;
+}
+
+section h1{
+    text-align: center;
+}
+
+marquee{
+    background-color: rgba(255,192,203,0.2);
+}
+
+.livre{
+    height: 100%;
+    box-shadow: 2px 2px 4px black ;
+}
+
+#retour{
+    margin: 20px;
+    border: 2px outset grey;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 2px 2px 6px black;
+    transition: all 0.5s ease-out 0s;
+    font-size: 20px;
+    background-color: blanchedalmond;
+}
+
+#retour:hover{
+    background-color: pink;
+}

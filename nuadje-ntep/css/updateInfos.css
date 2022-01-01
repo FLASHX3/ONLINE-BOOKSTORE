@@ -1,0 +1,139 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+#contain{
+    position: relative;
+    min-height: 100vh;
+    font-family: "Gabriola", Arial, Helvetica, sans-serif;
+    background-image: url("../img/L2.jpg");
+    background-size: cover;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    height: 100%;
+    padding: 10px;
+}
+
+form{
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 70vw;
+    box-shadow: 3px 3px 5px black;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+#retour{
+    margin: 10px;
+    width: max-content;
+    border: 2px outset grey;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    background-color: blanchedalmond;
+    box-shadow: 2px 2px 6px black;
+    transition: all 0.5s ease-out 0s;
+    font-size: 20px;
+}
+
+#retour:hover{
+    border-color: pink;
+}
+
+table{
+    width: 100%;
+}
+
+.label{
+    text-align: start;
+    width: 32%;
+}
+
+label{
+    font-weight: bold;
+    font-size: 25px;
+    color: rgb(7, 151, 177);
+}
+
+[type="text"],[type="password"],[type="tel"]{
+    width: 90%;
+    outline: none;
+    padding: 3px;
+    border: none;
+    border-bottom: 2px solid black;
+    color: blanchedalmond;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+[type="text"]:hover,[type="password"]:hover,[type="tel"]:hover{
+    border-bottom-color: pink;
+}
+
+[type="submit"],[type="reset"]{
+    margin: 10px;
+    height: 50px;
+    width: 100px;
+    border-radius: 20px;
+    outline: none;
+    font-weight: bold;
+    background-color: rgba(243, 240, 242, 0.7);
+    transition: width 0.5s ease-out 0s, backgound-color 0.3s ease-out 0s, color 0.3s ease-out 0s, border-color 0.3s ease-out 0s ;
+}
+
+[type="submit"]{
+    border: 2px solid rgb(5, 185, 65);
+    color: rgb(5, 185, 65);
+}
+
+[type="reset"]{
+    border: 2px solid rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+}
+
+[type="submit"]:hover,[type="reset"]:hover{
+    color: black;
+    width: 120px;
+    border-color: rgba(119, 78, 105, 0.7);
+}
+
+[type="submit"]:hover{
+    background-color: rgba(5, 185, 65, 0.5);
+}
+
+[type="reset"]:hover{
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.champ{
+    padding-bottom: 10px;
+    color: red;
+}
+
+.erreur{
+    color: red;
+    text-align: end;
+    font-size: 11px;
+    height: 11px;
+    border: 2px solid black;
+    display: block;
+    width: 100%;
+}
+
+h1{
+    color: pink;
+}

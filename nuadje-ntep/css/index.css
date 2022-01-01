@@ -45,7 +45,7 @@ fieldset{
 
 label{
     font-weight: bold;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 #login,#password{
@@ -119,4 +119,5 @@ span{
 #newclient,#forgotpassword{
     text-decoration: none;
     font-size: 20px;
+    color: blue;
 }

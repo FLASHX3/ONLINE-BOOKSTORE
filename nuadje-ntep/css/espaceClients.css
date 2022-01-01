@@ -1,0 +1,178 @@
+@charset "utf8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+#contain{
+    min-height: 100vh;
+    position: relative;
+    justify-content: center;
+    font-family: "Gabriola", Arial, Helvetica, sans-serif;
+    background-image: url("../img/book.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section{
+    height: 89vh;
+    display: flex;
+}
+
+#client{
+    text-align: center;
+    border: 2px solid rgb(7, 151, 177);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: auto;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: whitesmoke;
+    box-shadow: 2px 2px 2px black;
+}
+
+#h1{
+    border: 2px solid grey;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+#action{
+    border: 2px solid grey;
+    margin: 10px 0;
+    padding: 5px;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    font-size: 21px;
+}
+
+#action .a{
+    border: 2px solid pink;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 5px;
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+#action .a:hover{
+    background-color: pink;
+    border-color: grey;
+}
+
+.a a{
+    text-decoration: none;
+    padding-top: 10px;
+    color: blue;
+    font-weight: bold;
+    width: 100%;
+}
+
+#popup{
+    width: 33vw;
+    height: 60vh;
+    position: absolute;
+    z-index: 2;
+    top: 10vh;
+    left: 33%;
+    border: 2px solid black;
+    border-radius: 5%;
+    background-color: rgb(7, 151, 177);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: 6px 6px 12px black;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#popup h1{
+    text-align: center;
+    color: pink;
+}
+
+.button{
+    background-color: green;
+    color: whitesmoke;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+.close{
+    position: absolute;
+    right: 1.5rem;
+    top: 0.5rem;
+    font-size: 2rem;
+    font-weight: 1000;
+    text-decoration: none;
+    color: red;
+}
+
+aside{
+    position: absolute;
+    right: 0;
+    top: 10vh;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+aside h1{
+    text-align: center;
+    color: rgb(7, 151, 177);
+}
+
+.profil{
+    display: flex;
+    justify-content: center;
+}
+
+.compte{
+    border-radius: 50%;
+}
+
+.lien{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#disconnect, #suppression{
+    text-decoration: none;
+    border: 1px solid blue;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    transition: all 0.5s ease-in-out 0s;
+    color: blue;
+}
+
+#disconnect:hover{
+    background-color: yellow;
+    color: red;
+    border-color: white;
+    font-weight: bold;
+}
+
+#suppression:hover{
+    background-color: rgb(255, 0, 0);
+    color: black;
+    border-color: white;
+    font-weight: bold;
+}

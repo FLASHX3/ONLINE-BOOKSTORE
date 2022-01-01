@@ -58,7 +58,7 @@ function verifMdp(mdp)
         {
             surligne(mdp,true);
             b=false;
-            erreur.innerHTML="Mot de passe invalide!";
+            erreur.innerHTML="Le mot de passe doit contenir 8 caractères minimum sans caractères spéciaux!";
         }
         else
         {

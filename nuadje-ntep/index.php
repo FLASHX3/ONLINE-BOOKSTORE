@@ -26,14 +26,14 @@
             <form action="index.php" method="post" onsubmit="return verifForm(this);">
                 <fieldset>
                     <h1>Bienvenue sur ONLINE BOOKSTORE</h1>
-                    <label for="login">Login</label><input type="email" name="login" placeholder="votre email" id="login" required oninput="verifLogin(this);" title="votre email">
-                    <span id="errlog"></span>
-                    <label for="password">Password</label><input type="password" name="password" placeholder="8 caractères minimum" id="password" required oninput="verifMdp(this);" maxlength="16" title="8 caractères minimum">
+                    <label for="login">Login</label><input type="email" name="login" placeholder="votre email*" id="login" required oninput="verifLogin(this);" title="votre email">
+                    <span id="errlog"><?php if(isset($_GET['errlog'])){echo $_GET['errlog'];} ?></span>
+                    <label for="password">Password</label><input type="password" name="password" placeholder="8 caractères minimum*" id="password" required oninput="verifMdp(this);" maxlength="16" title="8 caractères minimum">
                     <span id="errmdp"><?php if(isset($_GET['errpass'])){echo $_GET['errpass'];} ?></span>
                     <input type="submit" value="Validez" title="se connecter" name="envoie"> <input type="reset" value="Effacer" title="vider les champs"><br>
                     <div id="lien">
                         <a href="pages/nouveauClient.php" id="newclient" title="s'inscrire"><p>Vous êtes un nouveau client: cliquez ICI</p></a>
-                        <a href="#forgot-pw" id="forgotpassword" title="Si vous avez oubliez votre mot de passe cliquez ici">mot de passe oublié?</a>
+                        <a href="pages/mail.php" id="forgotpassword" title="Si vous avez oubliez votre mot de passe cliquez ici">mot de passe oublié?</a>
                     </div>
                 </fieldset>
             </form>
@@ -60,14 +60,14 @@
 
             if(!preg_match('#[a-zA-Z0-9]+@[a-zA-Z0-9_-]+\.[a-z]{2,4}#',$login))
             {
-                header('location: pages/error.php');
+                header('location: pages/error.php?errlog=login incorrecte!');
             }
             if(!preg_match('#[a-zA-Z0-9.-_*@&$]{8,16}#',$password))
             {
-                header('location: pages/error.php');
+                header('location: pages/error.php?errpass=mot de passe incorrecte!');
             }
 
-            $password=sha1($password);      #on hache le mot de passe
+            $hash=sha1($password);      #on hache le mot de passe
 
             try
             {# connection à la base de donnée
@@ -82,7 +82,7 @@
 
             #on verifie s'il est bien dans la base de donnée
             $requete=$connexion->prepare('SELECT * FROM clients WHERE Email=? and Password=?');
-            $requete->execute(array($login,$password));
+            $requete->execute(array($login,$hash));
             $userexist=$requete->rowCount();
 
             if($userexist==1)        #s'il existe on ouvre sa session
@@ -95,7 +95,7 @@
                 $_SESSION['Nom']=$userinfo['Nom'];
                 $_SESSION['Prenom']=$userinfo['Prenom'];
                 $_SESSION['Email']=$userinfo['Email'];
-                $_SESSION['Password']=$userinfo['Password'];
+                $_SESSION['Password']=$password;
                 $_SESSION['Adresse']=$userinfo['Adresse'];
                 $_SESSION['AdresseLivraison']=$userinfo['AdresseLivraison'];
                 $_SESSION['DateCreationCompte']=$userinfo['DateCreationCompte'];
