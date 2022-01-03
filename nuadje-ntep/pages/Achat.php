@@ -79,12 +79,12 @@
             {
         ?>
             <div id="reduction">
-            <h1>Bon de reduction</h1>
-            <p>Chère client pour votre 6ième achat, vous beficier d'une réduction de 5% 😁</p>
-            <p>Le montant de l'achat passe de <del><?php echo $_GET['Prix'];?>Frs</del> à <?php echo $prix; ?>Frs</p>
-            <p>Online-bookstore vous remercie pour votre fidélité 😉</p>
-            <button onclick="fermer();">OK</button>
-        </div>
+                <h1>Bon de reduction</h1>
+                <p>Chère client pour votre 6ième achat, vous bénéficier d'une réduction de 5% 😁</p>
+                <p>Le montant de l'achat passe de <del><?php echo $_GET['Prix'];?>Frs</del> à <?php echo $prix; ?>Frs</p>
+                <p>Online-bookstore vous remercie pour votre fidélité 😉</p>
+                <button onclick="fermer();">OK</button>
+            </div>
         <?php
             }
         ?>

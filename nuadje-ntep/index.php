@@ -33,7 +33,7 @@
                     <input type="submit" value="Validez" title="se connecter" name="envoie"> <input type="reset" value="Effacer" title="vider les champs"><br>
                     <div id="lien">
                         <a href="pages/nouveauClient.php" id="newclient" title="s'inscrire"><p>Vous êtes un nouveau client: cliquez ICI</p></a>
-                        <a href="pages/mail.php" id="forgotpassword" title="Si vous avez oubliez votre mot de passe cliquez ici">mot de passe oublié?</a>
+                        <a href="pages/mail.php" target="blank" id="forgotpassword" title="Si vous avez oubliez votre mot de passe cliquez ici">mot de passe oublié?</a>
                     </div>
                 </fieldset>
             </form>

@@ -187,13 +187,13 @@ function verifAdresse(tel){
         if(!regex.test(tel.value))
         {
             f=false;
-            erreur.innerHTML="";
+            erreur.innerHTML="Le numéro de téléphone est invalide!";
             surligne(tel,true);
         }
         else
         {
             f=true;
-            erreur.innerHTML="Le numéro de téléphone est invalide!";
+            erreur.innerHTML="";
             surligne(tel,false);
         }
     }
@@ -214,12 +214,12 @@ function verifAdrLivr(ville){
         if(!regex.test(ville.value))
         {
             g=false;
-            erreur.innerHTML="";
+            erreur.innerHTML="adresse de livraison invalide!";
             surligne(ville,true);
         }
         else{
             g=true;
-            erreur.innerHTML="adresse de livraison invalide!";
+            erreur.innerHTML="";
             surligne(ville,false);
         }
     }
