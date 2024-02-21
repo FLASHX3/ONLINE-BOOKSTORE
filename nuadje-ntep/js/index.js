@@ -75,12 +75,5 @@ function verifForm(form)
     var loginOk=verifLogin(form.login);
     var mdpOk=verifMdp(form.password);
 
-    if(loginOk && mdpOk)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+   return (loginOk && mdpOk) ? true : false;
 }
